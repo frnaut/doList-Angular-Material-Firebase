@@ -1,0 +1,25 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <h1>Lista de Tareas</h1>
+        </div>
+        <div>
+            <a mat-mini-fab [routerLink]="[ '/nueva-tarea' ]">
+                <i class="material-icons">note_add</i>
+            </a>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div>
+        <mat-list role="list" *ngFor="let lista of listas">
+            <div *ngIf="!lista.realizado" class="d-flex justify-content-between">
+                <mat-list-item [routerLink]="[ 'tarea/', lista.id ]">
+                    <a>{{ lista.nombre | uppercase }}</a>    
+                </mat-list-item>
+                <i class="material-icons">navigate_next</i>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <h1>{{ tarea.nombre }}</h1>
+    <div>
+        <p *ngIf="!tarea.realizado" class="text-danger">Pendiente</p>
+        <p *ngIf="tarea.realizado" class="text-success">Realizada</p>  
+    </div>
+    <small> {{ tarea.fecha }} </small>
+    <mat-divider></mat-divider>
+
+    <div>
+        <p> {{ tarea.descripcion }} </p>    
+    </div>
+
+    <div>
+        <button [routerLink]="[ '/editar-tarea', tarea.id ]" class="mr-3" mat-raised-button>Editar</button>
+        <button (click)="eliminarTarea(tarea.id)" mat-raised-button>Eliminar</button>
+    </div>
+
+</div>

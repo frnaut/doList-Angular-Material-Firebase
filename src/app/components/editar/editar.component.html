@@ -1,0 +1,46 @@
+<div>
+    <div>
+        <small>Editar</small>
+        <h1>Ir al Super</h1>
+        <mat-divider></mat-divider>
+    </div>
+
+    <form #actualizarForm="ngForm" (ngSubmit)="actualizarTarea( actualizarForm )">
+        <div>
+            <mat-form-field class="w-100">
+                <mat-label>Nombre de la tarea</mat-label>
+                <input name="nombre" [(ngModel)]="tarea.nombre" required 
+                matInput placeholder="Nombre de la tarea">
+            </mat-form-field>    
+        </div>
+        
+        <div>
+            <mat-form-field class="w-100">
+                <mat-label>Descripcion de la tarea</mat-label>
+                <textarea name = "descripcion" [(ngModel)]="tarea.descripcion" 
+                matInput placeholder="Descripcion de la tarea"></textarea>
+            </mat-form-field>
+        </div>
+    
+        <div>
+            <mat-form-field class="w-100">
+                <mat-label>Fecha</mat-label>
+                <input name="fecha" [(ngModel)]="tarea.fecha" required
+                matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>                                
+        </div>
+
+        <div>
+            <mat-checkbox name="realizado" *ngIf="!tarea.realizado" [(ngModel)]="tarea.realizado" class="text-danger">Pendiente</mat-checkbox>
+            <mat-checkbox name="realizado" *ngIf="tarea.realizado" [(ngModel)]="tarea.realizado" class="text-success">Realizado</mat-checkbox>
+        </div>
+    
+        <div>
+            <button type="submit" mat-raised-button>Guardar</button>
+        </div>
+    </form>
+
+</div>
+
